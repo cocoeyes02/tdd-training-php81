@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Money\Tests\Unit;
 
 use Money\Dollar;
+use Money\Franc;
 use Money\Tests\TestCase;
 
 class MoneyTest extends TestCase
