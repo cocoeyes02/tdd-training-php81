@@ -1,0 +1,24 @@
+{
+    "name": "cocoeyes02/tdd-traning-money",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kazuki Otsu",
+            "email": "cocoeyes02@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Money\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Money\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
