@@ -18,8 +18,8 @@ class Dollar
         return new self($this->amount * $multiplier);
     }
 
-    public function equals(Object $object): bool
+    public function equals(self $object): bool
     {
-        return true;
+        return $this->amount === $object->amount;
     }
 }
