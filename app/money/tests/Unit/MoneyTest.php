@@ -17,4 +17,11 @@ class MoneyTest extends TestCase
         $product = $five->times(3);
         $this->assertSame(15, $product->amount);
     }
+
+    public function testEquality()
+    {
+        $this->assertTrue((new Dollar(5))->equals(new Dollar(5)));
+        $this->assertFalse((new Dollar(5))->equals(new Dollar(6)));
+
+    }
 }

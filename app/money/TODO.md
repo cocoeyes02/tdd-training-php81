@@ -4,3 +4,7 @@
 - [ ] amount を private にする
 - [x] Dollar の副作用どうする？
 - [ ] Money の丸誤差どうする？
+- [x] equals()
+- [ ] hashCode()
+- [ ] null との等価性比較
+- [ ] 他のオブジェクトとの等価性比較
