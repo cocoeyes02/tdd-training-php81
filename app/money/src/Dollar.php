@@ -13,9 +13,8 @@ class Dollar
         $this->amount = $amount;
     }
 
-    public function times(int $multiplier)
+    public function times(int $multiplier): self
     {
-        $this->amount *= $multiplier;
-        return null;
+        return new self($this->amount * $multiplier);
     }
 }
