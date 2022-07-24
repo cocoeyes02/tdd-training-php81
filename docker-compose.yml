@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+    php:
+        build: ./docker/php
+        container_name: phpunit
+        tty: true
+        volumes:
+            - type: bind
+              source: ./app
+              target: /app
