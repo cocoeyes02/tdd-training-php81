@@ -24,7 +24,7 @@ abstract class Money
 
     static function dollar(int $amount): self
     {
-        return new Dollar($amount);
+        return new Dollar($amount, "USD");
     }
 
     static function franc(int $amount): self
