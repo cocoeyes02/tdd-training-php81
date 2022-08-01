@@ -29,6 +29,6 @@ abstract class Money
 
     static function franc(int $amount): self
     {
-        return new Franc($amount, null);
+        return new Franc($amount, "CHF");
     }
 }
