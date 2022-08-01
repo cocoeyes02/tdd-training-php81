@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Money;
 
-abstract class Money
+class Money
 {
     protected int $amount;
     protected string $currency;
@@ -15,7 +15,10 @@ abstract class Money
         $this->currency = $currency;
     }
 
-    abstract function times(int $multiplier): self;
+    function times(int $multiplier)
+    {
+        return null;
+    }
 
     public function currency(): string
     {

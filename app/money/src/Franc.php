@@ -8,6 +8,6 @@ class Franc extends Money
 {
     public function times(int $multiplier): Money
     {
-        return Money::franc($this->amount * $multiplier);
+        return new Money($this->amount * $multiplier, $this->currency);
     }
 }
