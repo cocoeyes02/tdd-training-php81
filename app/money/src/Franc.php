@@ -6,14 +6,14 @@ namespace Money;
 
 class Franc extends Money
 {
-    public function __construct(int $amount)
+    public function __construct(int $amount, ?string $currency)
     {
         $this->amount = $amount;
-        $this->currency = "CHF";
+        $this->currency = $currency ?? "CHF";
     }
 
     public function times(int $multiplier): Money
     {
-        return new self($this->amount * $multiplier);
+        return new self($this->amount * $multiplier, null);
     }
 }
