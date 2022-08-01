@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Money\Tests\Unit;
 
+use Money\Franc;
 use Money\Money;
 use Money\Tests\TestCase;
 
@@ -40,6 +41,6 @@ class MoneyTest extends TestCase
 
     public function testDifferentClassEquality()
     {
-        $this->assertTrue((new Money(10, "CHF"))->equals(new Money(10, "CHF")));
+        $this->assertTrue((new Money(10, "CHF"))->equals(new Franc(10, "CHF")));
     }
 }
