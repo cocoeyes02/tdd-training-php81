@@ -28,7 +28,7 @@ class Money
     public function equals(self $money): bool
     {
         return $this->amount === $money->amount
-            && $this::class === $money::class;
+            && $this->currency() === $money->currency();
     }
 
     static function dollar(int $amount): self
