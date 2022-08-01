@@ -9,6 +9,12 @@ abstract class Money
     protected int $amount;
     protected string $currency;
 
+    public function __construct(int $amount, string $currency)
+    {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
+
     abstract function times(int $multiplier): self;
 
     public function currency(): string
