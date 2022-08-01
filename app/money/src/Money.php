@@ -7,10 +7,14 @@ namespace Money;
 abstract class Money
 {
     protected int $amount;
+    protected string $currency;
 
     abstract function times(int $multiplier): self;
 
-    abstract function currency(): string;
+    public function currency(): string
+    {
+        return $this->currency;
+    }
 
     public function equals(self $money): bool
     {
