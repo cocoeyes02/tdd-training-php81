@@ -22,7 +22,7 @@ class Money implements Expression
 
     public function plus(self $addend): Expression
     {
-        return new Money($this->amount + $addend->amount, $this->currency);
+        return new Sum($this, $addend);
     }
 
     public function currency(): string

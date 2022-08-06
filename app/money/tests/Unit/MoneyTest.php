@@ -6,6 +6,7 @@ namespace Money\Tests\Unit;
 
 use Money\Bank;
 use Money\Money;
+use Money\Sum;
 use Money\Tests\TestCase;
 
 class MoneyTest extends TestCase
