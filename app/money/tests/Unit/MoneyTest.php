@@ -38,4 +38,14 @@ class MoneyTest extends TestCase
         $reduced = $bank->reduce($sum, "USD");
         $this->assertObjectEquals(Money::dollar(10), $reduced);
     }
+
+    public function testPlusReturnsSum()
+    {
+        $five = Money::dollar(5);
+        $result = $five->plus($five);
+        $cast = fn($result): Sum => $result;
+        $sum = $cast($result);
+        $this->assertObjectEquals($five, $sum->augend);
+        $this->assertObjectEquals($five, $sum->addend);
+    }
 }
