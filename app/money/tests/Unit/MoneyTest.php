@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Money\Tests\Unit;
 
+use Money\Bank;
 use Money\Money;
 use Money\Tests\TestCase;
 
