@@ -6,8 +6,8 @@ namespace Money;
 
 class Sum implements Expression
 {
-    public Money $augend;
-    public Money $addend;
+    public readonly Money $augend;
+    public readonly Money $addend;
 
     public function __construct(Money $augend, Money $addend)
     {
