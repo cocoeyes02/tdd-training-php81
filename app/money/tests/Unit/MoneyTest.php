@@ -35,7 +35,6 @@ class MoneyTest extends TestCase
         $five = Money::dollar(5);
         $sum = $five->plus(Money::dollar(5));
         $bank = new Bank();
-        $this->assertObjectEquals(Money::dollar(10), $sum);
         $reduced = $bank->reduce($sum, "USD");
         $this->assertObjectEquals(Money::dollar(10), $reduced);
     }
