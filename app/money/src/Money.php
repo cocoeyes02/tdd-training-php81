@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Money;
 
-class Money
+class Money implements Expression
 {
     protected int $amount;
     protected string $currency;
