@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Money\Tests\Unit;
 
-use Money\Franc;
+use Money\Bank;
 use Money\Money;
 use Money\Tests\TestCase;
 
@@ -28,5 +28,15 @@ class MoneyTest extends TestCase
     {
         $this->assertSame("USD", Money::dollar(1)->currency());
         $this->assertSame("CHF", Money::franc(1)->currency());
+    }
+
+    public function testSimpleAddition()
+    {
+        $five = Money::dollar(5);
+        $sum = $five->plus(Money::dollar(5));
+        $bank = new Bank();
+        $this->assertObjectEquals(Money::dollar(10), $sum);
+        $reduced = $bank->reduce($sum, "USD");
+        $this->assertObjectEquals(Money::dollar(10), $reduced);
     }
 }
