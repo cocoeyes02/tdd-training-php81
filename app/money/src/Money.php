@@ -15,7 +15,7 @@ class Money
         $this->currency = $currency;
     }
 
-    function times(int $multiplier)
+    public function times(int $multiplier): self
     {
         return new Money($this->amount * $multiplier, $this->currency);
     }
