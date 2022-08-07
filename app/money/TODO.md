@@ -3,7 +3,7 @@
 - [x] $5 * 2 = $10
 - [ ] $5 + $5 = $10
 - [ ] $5 + $5 が Money を返す
-- [ ] Bank.reduce(Money)
+- [x] Bank.reduce(Money)
 - [x] amount を private にする
 - [x] Dollar の副作用どうする？
 - [ ] Money の丸誤差どうする？
