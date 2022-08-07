@@ -110,4 +110,9 @@ class MoneyTest extends TestCase
         $this->assertObjectEquals(Money::dollar(20), $result);
     }
 
+    public function testPlusSameCurrencyReturnsMoney()
+    {
+        $sum = Money::dollar(1)->plus(Money::dollar(1));
+        $this->assertInstanceOf(Money::class, $sum);
+    }
 }
