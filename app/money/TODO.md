@@ -21,4 +21,4 @@
 - [x] testFrancMultiplicationを削除する？
 - [x] Reduce(Bank, String)
 - [x] Sum.plus
-- [ ] Expression.times
+- [x] Expression.times
