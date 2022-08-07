@@ -42,12 +42,12 @@ class Money implements Expression
             && $this->currency() === $money->currency();
     }
 
-    static function dollar(int $amount): self
+    public static function dollar(int $amount): self
     {
         return new Money($amount, "USD");
     }
 
-    static function franc(int $amount): self
+    public static function franc(int $amount): self
     {
         return new Money($amount, "CHF");
     }
