@@ -20,5 +20,5 @@
 - [x] 通貨の概念
 - [x] testFrancMultiplicationを削除する？
 - [x] Reduce(Bank, String)
-- [ ] Sum.plus
+- [x] Sum.plus
 - [ ] Expression.times
