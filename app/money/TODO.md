@@ -1,7 +1,7 @@
 # TODOリスト
-- [ ] $5 + 10 CHF = $10(レートが2:1の場合)
+- [x] $5 + 10 CHF = $10(レートが2:1の場合)
 - [x] $5 * 2 = $10
-- [ ] $5 + $5 = $10
+- [x] $5 + $5 = $10
 - [ ] $5 + $5 が Money を返す
 - [x] Bank.reduce(Money)
 - [x] Money を変換して換算を行う
@@ -19,3 +19,6 @@
 - [x] Franc と Dollar を比較する
 - [x] 通貨の概念
 - [x] testFrancMultiplicationを削除する？
+- [x] Reduce(Bank, String)
+- [ ] Sum.plus
+- [ ] Expression.times
