@@ -15,64 +15,54 @@ class TestCase
     {
     }
 
+    public function tearDown(): void
+    {
+    }
+
     public function run(): void
     {
         $this->setUp();
         call_user_func([$this, $this->name]);
+        $this->tearDown();
     }
 }
 
 class WasRun extends TestCase
 {
-    private ?int $wasRun;
-    private ?int $wasSetUp;
+    private string $log;
 
     public function setUp(): void
     {
-        $this->wasRun = null;
-        $this->wasSetUp = 1;
+        $this->log = "setUp ";
     }
 
     public function testMethod(): void
     {
-        $this->wasRun = 1;
+        $this->log = $this->log . "testMethod ";
     }
 
-    public function wasRun(): ?int
+    public function tearDown(): void
     {
-        return $this->wasRun;
+        $this->log = $this->log . "tearDown ";
     }
 
-    public function wasSetUp(): ?int
+    public function log(): string
     {
-        return $this->wasSetUp;
+        return $this->log;
     }
 }
 
 class TestCaseTest extends TestCase
 {
-    private WasRun $test;
-
-    public function setUp(): void
+    public function testTemplateMethod()
     {
-        $this->test = new WasRun("testMethod");
-    }
-
-    public function testRunning()
-    {
-        $this->test->run();
-        assert($this->test->wasRun() === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
-    }
-
-    public function testSetUp()
-    {
-        $this->test->run();
-        assert($this->test->wasSetUp(), "テストメソッド実行後は準備完了のステータスでなければなりません");
+        $test = new WasRun("testMethod");
+        $test->run();
+        assert("setUp testMethod tearDown " === $test->log(), "テストメソッド実行後はsetUpとtestMethodとtearDownのログが出力されなければなりません");
     }
 }
 
 ini_set('assert.active', '1');
 ini_set('assert.exception', '1');
 
-(new TestCaseTest("testRunning"))->run();
-(new TestCaseTest("testSetUp"))->run();
+(new TestCaseTest("testTemplateMethod"))->run();
