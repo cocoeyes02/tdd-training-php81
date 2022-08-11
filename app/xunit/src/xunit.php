@@ -41,18 +41,23 @@ class WasRun extends TestCase
 
 class TestCaseTest extends TestCase
 {
+    private WasRun $test;
+
+    public function setUp(): void
+    {
+        $this->test = new WasRun("testMethod");
+    }
+
     public function testRunning()
     {
-        $test = new WasRun("testMethod");
-        $test->run();
-        assert($test->wasRun === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
+        $this->test->run();
+        assert($this->test->wasRun === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
     }
 
     public function testSetUp()
     {
-        $test = new WasRun("testMethod");
-        $test->run();
-        assert($test->wasSetUp, "テストメソッド実行後は準備完了のステータスでなければなりません");
+        $this->test->run();
+        assert($this->test->wasSetUp, "テストメソッド実行後は準備完了のステータスでなければなりません");
     }
 }
 
