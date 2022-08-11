@@ -42,9 +42,17 @@ class TestCaseTest extends TestCase
         $test->run();
         assert($test->wasRun === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
     }
+
+    public function testSetUp()
+    {
+        $test = new WasRun("testMethod");
+        $test->run();
+        assert($this->wasSetUp, "テストメソッド実行後は準備完了のステータスでなければなりません");
+    }
 }
 
 ini_set('assert.active', '1');
 ini_set('assert.exception', '1');
 
 (new TestCaseTest("testRunning"))->run();
+(new TestCaseTest("testSetUp"))->run();
