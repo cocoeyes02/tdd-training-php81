@@ -2,20 +2,29 @@
 
 declare(strict_types=1);
 
-class WasRun
+class TestCase
 {
-    public ?int $wasRun;
     public readonly string $name;
 
     public function __construct(string $name)
     {
-        $this->wasRun = null;
         $this->name = $name;
     }
 
     public function run(): void
     {
         call_user_func([$this, $this->name]);
+    }
+}
+
+class WasRun extends TestCase
+{
+    public ?int $wasRun;
+
+    public function __construct(string $name)
+    {
+        $this->wasRun = null;
+        parent::__construct($name);
     }
 
     public function testMethod(): void
