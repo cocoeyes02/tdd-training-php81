@@ -33,10 +33,18 @@ class WasRun extends TestCase
     }
 }
 
+class TestCaseTest extends TestCase
+{
+    public function testRunning()
+    {
+        $test = new WasRun("testMethod");
+        assert(is_null($test->wasRun), "テストメソッドを実行する前は実行前のステータスでなければなりません");
+        $test->run();
+        assert($test->wasRun === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
+    }
+}
+
 ini_set('assert.active', '1');
 ini_set('assert.exception', '1');
 
-$test = new WasRun("testMethod");
-assert(is_null($test->wasRun), "テストメソッドを実行する前は実行前のステータスでなければなりません");
-$test->run();
-assert($test->wasRun === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
+(new TestCaseTest("testRunning"))->run();
