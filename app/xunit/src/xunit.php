@@ -15,10 +15,15 @@ class TestCase
     {
     }
 
+    public function tearDown(): void
+    {
+    }
+
     public function run(): void
     {
         $this->setUp();
         call_user_func([$this, $this->name]);
+        $this->tearDown();
     }
 }
 
@@ -34,6 +39,11 @@ class WasRun extends TestCase
     public function testMethod(): void
     {
         $this->log = $this->log . "testMethod ";
+    }
+
+    public function tearDown(): void
+    {
+        $this->log = $this->log . "tearDown ";
     }
 
     public function log(): string
