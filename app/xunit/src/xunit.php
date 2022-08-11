@@ -48,7 +48,7 @@ class TestCaseTest extends TestCase
     {
         $test = new WasRun("testMethod");
         $test->run();
-        assert("setUp testMethod " === $test->log(), "テストメソッド実行後はsetUpとtestMethodのログが出力されなければなりません");
+        assert("setUp testMethod tearDown " === $test->log(), "テストメソッド実行後はsetUpとtestMethodとtearDownのログが出力されなければなりません");
     }
 }
 
