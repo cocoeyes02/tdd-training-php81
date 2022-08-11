@@ -11,6 +11,11 @@ class WasRun
         $this->wasRun = null;
     }
 
+    public function run(): void
+    {
+        $this->testMethod();
+    }
+
     public function testMethod(): void
     {
         $this->wasRun = 1;
@@ -22,5 +27,5 @@ ini_set('assert.exception', '1');
 
 $test = new WasRun("testMethod");
 assert(is_null($test->wasRun), "テストメソッドを実行する前は実行前のステータスでなければなりません");
-$test->testMethod();
+$test->run();
 assert($test->wasRun === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
