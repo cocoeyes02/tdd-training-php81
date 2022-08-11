@@ -11,36 +11,63 @@ class TestCase
         $this->name = $name;
     }
 
+    public function setUp(): void
+    {
+    }
+
     public function run(): void
     {
+        $this->setUp();
         call_user_func([$this, $this->name]);
     }
 }
 
 class WasRun extends TestCase
 {
-    public ?int $wasRun;
+    private ?int $wasRun;
+    private ?int $wasSetUp;
 
-    public function __construct(string $name)
+    public function setUp(): void
     {
         $this->wasRun = null;
-        parent::__construct($name);
+        $this->wasSetUp = 1;
     }
 
     public function testMethod(): void
     {
         $this->wasRun = 1;
     }
+
+    public function wasRun(): ?int
+    {
+        return $this->wasRun;
+    }
+
+    public function wasSetUp(): ?int
+    {
+        return $this->wasSetUp;
+    }
 }
 
 class TestCaseTest extends TestCase
 {
+    private WasRun $test;
+
+    public function setUp(): void
+    {
+        $this->test = new WasRun("testMethod");
+    }
+
     public function testRunning()
     {
-        $test = new WasRun("testMethod");
-        assert(is_null($test->wasRun), "テストメソッドを実行する前は実行前のステータスでなければなりません");
-        $test->run();
-        assert($test->wasRun === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
+        $this->test->run();
+        assert($this->test->wasRun() === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
+    }
+
+    public function testSetUp()
+    {
+        $this->test->run();
+        assert($this->test->wasSetUp(), "テストメソッド実行後は準備完了のステータスでなければなりません");
     }
 }
 
@@ -48,3 +75,4 @@ ini_set('assert.active', '1');
 ini_set('assert.exception', '1');
 
 (new TestCaseTest("testRunning"))->run();
+(new TestCaseTest("testSetUp"))->run();
