@@ -27,14 +27,9 @@ class WasRun extends TestCase
     public ?int $wasRun;
     public ?int $wasSetUp;
 
-    public function __construct(string $name)
-    {
-        $this->wasRun = null;
-        parent::__construct($name);
-    }
-
     public function setUp(): void
     {
+        $this->wasRun = null;
         $this->wasSetUp = 1;
     }
 
@@ -49,7 +44,6 @@ class TestCaseTest extends TestCase
     public function testRunning()
     {
         $test = new WasRun("testMethod");
-        assert(is_null($test->wasRun), "テストメソッドを実行する前は実行前のステータスでなければなりません");
         $test->run();
         assert($test->wasRun === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
     }
