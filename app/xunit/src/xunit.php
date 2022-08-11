@@ -5,15 +5,17 @@ declare(strict_types=1);
 class WasRun
 {
     public ?int $wasRun;
+    public readonly string $name;
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->wasRun = null;
+        $this->name = $name;
     }
 
     public function run(): void
     {
-        $this->testMethod();
+        call_user_func([$this, $this->name]);
     }
 
     public function testMethod(): void
