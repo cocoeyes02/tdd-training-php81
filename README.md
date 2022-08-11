@@ -12,6 +12,11 @@
  |  |  |-- Makefile      # テスト実行などコマンドをまとめたMakefile
  |  |  |-- TODO.md      # 本の中で出てきたTODOリスト
  |  |  :
+ |  |-- xunit/          # 第2部 xUnitに関係したコード
+ |  |  |-- src/         # テスティングフレームワークのソースコード
+ |  |  |-- Makefile      # テスト実行などコマンドをまとめたMakefile
+ |  |  |-- TODO.md      # 本の中で出てきたTODOリスト
+ |  |  :
  |  :
  |-- docker/            # Docker イメージビルド用のファイル等が入っている
  :
