@@ -24,24 +24,16 @@ class TestCase
 
 class WasRun extends TestCase
 {
-    private ?int $wasRun;
     private string $log;
 
     public function setUp(): void
     {
-        $this->wasRun = null;
         $this->log = "setUp ";
     }
 
     public function testMethod(): void
     {
-        $this->wasRun = 1;
         $this->log = $this->log . "testMethod ";
-    }
-
-    public function wasRun(): ?int
-    {
-        return $this->wasRun;
     }
 
     public function log(): string
@@ -59,13 +51,7 @@ class TestCaseTest extends TestCase
         $this->test = new WasRun("testMethod");
     }
 
-    public function testRunning()
-    {
-        $this->test->run();
-        assert($this->test->wasRun() === 1, "テストメソッド実行後は実行後のステータスでなければなりません");
-    }
-
-    public function testSetUp()
+    public function testTemplateMethod()
     {
         $this->test->run();
         assert("setUp testMethod " === $this->test->log(), "テストメソッド実行後はsetUpとtestMethodのログが出力されなければなりません");
@@ -75,5 +61,4 @@ class TestCaseTest extends TestCase
 ini_set('assert.active', '1');
 ini_set('assert.exception', '1');
 
-(new TestCaseTest("testRunning"))->run();
-(new TestCaseTest("testSetUp"))->run();
+(new TestCaseTest("testTemplateMethod"))->run();
