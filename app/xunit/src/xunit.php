@@ -125,6 +125,16 @@ class TestCaseTest extends TestCase
         echo $result->summary() . PHP_EOL;
         assert("1 run, 1 failed" === $result->summary(), "テスト失敗の処理をした後は実行結果サマリーに1テスト実行と1テスト失敗が記録されていなければなりません");
     }
+
+    public function testSuite()
+    {
+        $suite = new TestSuite();
+        $suite->add(new WasRun("testMethod"));
+        $suite->add(new WasRun("testBrokenMethod"));
+        $result = $suite->run();
+        echo $result->summary() . PHP_EOL;
+        assert("2 run, 1 failed" === $result->summary(), "成功するテストと失敗するテストで構成されたテストスイートを実行した後、実行結果サマリーに2テスト実行と1テスト失敗が記録されていなければなりません");
+    }
 }
 
 ini_set('assert.active', '1');
@@ -134,3 +144,4 @@ ini_set('assert.exception', '1');
 (new TestCaseTest("testResult"))->run();
 (new TestCaseTest("testFailedResult"))->run();
 (new TestCaseTest("testFailedResultFormatting"))->run();
+(new TestCaseTest("testSuite"))->run();
