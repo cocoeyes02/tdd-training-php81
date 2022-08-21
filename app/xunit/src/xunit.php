@@ -125,7 +125,6 @@ class TestCaseTest extends TestCase
     {
         $test = new WasRun("testMethod");
         $test->run($this->result);
-        echo $this->result->summary() . PHP_EOL;
         assert("setUp testMethod tearDown " === $test->log(), "テストメソッド実行後はsetUpとtestMethodとtearDownのログが出力されなければなりません");
     }
 
@@ -133,7 +132,6 @@ class TestCaseTest extends TestCase
     {
         $test = new WasRun("testMethod");
         $test->run($this->result);
-        echo $this->result->summary() . PHP_EOL;
         assert("1 run, 0 failed" === $this->result->summary(), "テストメソッドを1つ実行した後は実行結果サマリーに1テスト実行と失敗なしが記録されていなければなりません");
     }
 
@@ -141,7 +139,6 @@ class TestCaseTest extends TestCase
     {
         $test = new WasRun("testBrokenMethod");
         $test->run($this->result);
-        echo $this->result->summary() . PHP_EOL;
         assert("1 run, 1 failed" === $this->result->summary(), "失敗になるテストメソッドを1つ実行した後は実行結果サマリーに1テスト実行と1テスト失敗が記録されていなければなりません");
     }
 
@@ -149,7 +146,6 @@ class TestCaseTest extends TestCase
     {
         $this->result->testStarted();
         $this->result->testFailed();
-        echo $this->result->summary() . PHP_EOL;
         assert("1 run, 1 failed" === $this->result->summary(), "テスト失敗の処理をした後は実行結果サマリーに1テスト実行と1テスト失敗が記録されていなければなりません");
     }
 
@@ -159,7 +155,6 @@ class TestCaseTest extends TestCase
         $suite->add(new WasRun("testMethod"));
         $suite->add(new WasRun("testBrokenMethod"));
         $suite->run($this->result);
-        echo $this->result->summary() . PHP_EOL;
         assert("2 run, 1 failed" === $this->result->summary(), "成功するテストと失敗するテストで構成されたテストスイートを実行した後、実行結果サマリーに2テスト実行と1テスト失敗が記録されていなければなりません");
     }
 }
