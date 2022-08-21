@@ -4,9 +4,16 @@ declare(strict_types=1);
 
 class TestResult
 {
+    private int $runCount;
+
+    public function __construct()
+    {
+        $this->runCount = 1;
+    }
+
     public function summary(): string
     {
-        return "1 run, 0 failed";
+        return $this->runCount . " run, 0 failed";
     }
 }
 
