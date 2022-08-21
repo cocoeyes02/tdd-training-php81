@@ -8,7 +8,12 @@ class TestResult
 
     public function __construct()
     {
-        $this->runCount = 1;
+        $this->runCount = 0;
+    }
+
+    public function testStarted()
+    {
+        $this->runCount = $this->runCount + 1;
     }
 
     public function summary(): string
@@ -36,10 +41,12 @@ class TestCase
 
     public function run(): TestResult
     {
+        $result = new TestResult();
+        $result->testStarted();
         $this->setUp();
         call_user_func([$this, $this->name]);
         $this->tearDown();
-        return new TestResult();
+        return $result;
     }
 }
 
