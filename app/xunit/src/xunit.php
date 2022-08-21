@@ -46,7 +46,7 @@ class TestCase
     {
     }
 
-    public function run(): TestResult
+    public function run(TestResult $result): void
     {
         $result = new TestResult();
         $result->testStarted();
@@ -57,7 +57,6 @@ class TestCase
             $result->testFailed();
         }
         $this->tearDown();
-        return $result;
     }
 }
 
@@ -70,18 +69,16 @@ class TestSuite
         $this->tests = [];
     }
 
-    public function add(WasRun $test): void
+    public function add(TestCase $test): void
     {
         $this->tests[] = $test;
     }
 
-    public function run(): TestResult
+    public function run(TestResult $result): void
     {
-        $result = new TestResult();
         foreach ($this->tests as $test) {
             $test->run($result);
         }
-        return $result;
     }
 }
 
@@ -155,7 +152,8 @@ class TestCaseTest extends TestCase
         $suite = new TestSuite();
         $suite->add(new WasRun("testMethod"));
         $suite->add(new WasRun("testBrokenMethod"));
-        $result = $suite->run();
+        $result = new TestResult();
+        $suite->run($result);
         echo $result->summary() . PHP_EOL;
         assert("2 run, 1 failed" === $result->summary(), "成功するテストと失敗するテストで構成されたテストスイートを実行した後、実行結果サマリーに2テスト実行と1テスト失敗が記録されていなければなりません");
     }
