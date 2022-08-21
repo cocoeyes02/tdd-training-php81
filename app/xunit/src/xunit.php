@@ -97,27 +97,24 @@ class TestCaseTest extends TestCase
     {
         $test = new WasRun("testMethod");
         $result = $test->run();
-        if (assert("setUp testMethod tearDown " === $test->log(), "テストメソッド実行後はsetUpとtestMethodとtearDownのログが出力されなければなりません")) {
-            echo $result->summary() . PHP_EOL;
-        }
+        echo $result->summary() . PHP_EOL;
+        assert("setUp testMethod tearDown " === $test->log(), "テストメソッド実行後はsetUpとtestMethodとtearDownのログが出力されなければなりません")；
     }
 
     public function testResult()
     {
         $test = new WasRun("testMethod");
         $result = $test->run();
-        if (assert("1 run, 0 failed" === $result->summary(), "テストメソッドを1つ実行した後は実行結果サマリーに1テスト実行と失敗なしが記録されていなければなりません")) {
-            echo $result->summary() . PHP_EOL;
-        }
+        echo $result->summary() . PHP_EOL;
+        assert("1 run, 0 failed" === $result->summary(), "テストメソッドを1つ実行した後は実行結果サマリーに1テスト実行と失敗なしが記録されていなければなりません");
     }
 
     public function testFailedResult()
     {
         $test = new WasRun("testBrokenMethod");
         $result = $test->run();
-        if (assert("1 run, 1 failed" === $result->summary(), "失敗になるテストメソッドを1つ実行した後は実行結果サマリーに1テスト実行と1テスト失敗が記録されていなければなりません")) {
-            echo $result->summary() . PHP_EOL;
-        }
+        echo $result->summary() . PHP_EOL;
+        assert("1 run, 1 failed" === $result->summary(), "失敗になるテストメソッドを1つ実行した後は実行結果サマリーに1テスト実行と1テスト失敗が記録されていなければなりません");
     }
 
     public function testFailedResultFormatting()
@@ -125,9 +122,8 @@ class TestCaseTest extends TestCase
         $result = new TestResult();
         $result->testStarted();
         $result->testFailed();
-        if (assert("1 run, 1 failed" === $result->summary(), "テスト失敗の処理をした後は実行結果サマリーに1テスト実行と1テスト失敗が記録されていなければなりません")) {
-            echo $result->summary() . PHP_EOL;
-        }
+        echo $result->summary() . PHP_EOL;
+        assert("1 run, 1 failed" === $result->summary(), "テスト失敗の処理をした後は実行結果サマリーに1テスト実行と1テスト失敗が記録されていなければなりません");
     }
 }
 
