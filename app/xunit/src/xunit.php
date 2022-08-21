@@ -102,6 +102,14 @@ class TestCaseTest extends TestCase
         $result = $test->run();
         assert("1 run, 1 failed" === $result->summary(), "失敗になるテストメソッドを1つ実行した後は実行結果サマリーに1テスト実行と1テスト失敗が記録されていなければなりません");
     }
+
+    public function testFailedResultFormatting()
+    {
+        $result = new TestResult();
+        $result->testStarted();
+        $result->testFailed();
+        assert("1 run, 1 failed" === $result->summary(), "テスト失敗の処理をした後は実行結果サマリーに1テスト実行と1テスト失敗が記録されていなければなりません");
+    }
 }
 
 ini_set('assert.active', '1');
@@ -110,3 +118,4 @@ ini_set('assert.exception', '1');
 (new TestCaseTest("testTemplateMethod"))->run();
 (new TestCaseTest("testResult"))->run();
 // (new TestCaseTest("testFailedResult"))->run();
+ (new TestCaseTest("testFailedResultFormatting"))->run();
