@@ -13,12 +13,12 @@ class TestResult
         $this->errorCount = 0;
     }
 
-    public function testStarted()
+    public function testStarted(): void
     {
         $this->runCount = $this->runCount + 1;
     }
 
-    public function testFailed()
+    public function testFailed(): void
     {
         $this->errorCount = $this->errorCount + 1;
     }
