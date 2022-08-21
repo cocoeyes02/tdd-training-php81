@@ -60,9 +60,17 @@ class TestCaseTest extends TestCase
         $test->run();
         assert("setUp testMethod tearDown " === $test->log(), "テストメソッド実行後はsetUpとtestMethodとtearDownのログが出力されなければなりません");
     }
+
+    public function testResult()
+    {
+        $test = new WasRun("testMethod");
+        $result = $test->run();
+        assert("1 run, 0 failed" === $result->summary(), "テストメソッドを1つ実行した後は実行結果サマリーに1テスト実行と失敗なしが記録されていなければなりません");
+    }
 }
 
 ini_set('assert.active', '1');
 ini_set('assert.exception', '1');
 
 (new TestCaseTest("testTemplateMethod"))->run();
+(new TestCaseTest("testResult"))->run();
