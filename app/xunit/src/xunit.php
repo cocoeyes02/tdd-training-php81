@@ -48,7 +48,6 @@ class TestCase
 
     public function run(TestResult $result): void
     {
-        $result = new TestResult();
         $result->testStarted();
         $this->setUp();
         try {
@@ -162,8 +161,12 @@ class TestCaseTest extends TestCase
 ini_set('assert.active', '1');
 ini_set('assert.exception', '1');
 
-(new TestCaseTest("testTemplateMethod"))->run();
-(new TestCaseTest("testResult"))->run();
-(new TestCaseTest("testFailedResult"))->run();
-(new TestCaseTest("testFailedResultFormatting"))->run();
-(new TestCaseTest("testSuite"))->run();
+$suite = new TestSuite();
+$suite->add(new TestCaseTest("testTemplateMethod"));
+$suite->add(new TestCaseTest("testResult"));
+$suite->add(new TestCaseTest("testFailedResult"));
+$suite->add(new TestCaseTest("testFailedResultFormatting"));
+$suite->add(new TestCaseTest("testSuite"));
+$result = new TestResult();
+$suite->run($result);
+echo $result->summary();
