@@ -51,7 +51,11 @@ class TestCase
         $result = new TestResult();
         $result->testStarted();
         $this->setUp();
-        call_user_func([$this, $this->name]);
+        try {
+            call_user_func([$this, $this->name]);
+        } catch (Exception $e) {
+            $result->testFailed();
+        }
         $this->tearDown();
         return $result;
     }
@@ -132,5 +136,5 @@ ini_set('assert.exception', '1');
 
 (new TestCaseTest("testTemplateMethod"))->run();
 (new TestCaseTest("testResult"))->run();
-//(new TestCaseTest("testFailedResult"))->run();
+(new TestCaseTest("testFailedResult"))->run();
 (new TestCaseTest("testFailedResultFormatting"))->run();
