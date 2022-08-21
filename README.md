@@ -6,7 +6,10 @@ https://www.amazon.co.jp/dp/B077D2L69C
 # リポジトリの見方
 ソースコード自体は現在写経したところまでのソースが反映されています。
 
-各章ごとのソースや所感等を読みたい方は、[マージ済みのPR一覧](https://github.com/cocoeyes02/tdd-training-php81/pulls?q=is%3Apr+is%3Aclosed)を確認してみてください。
+各章ごとのソースや所感、PHPで写経するときに困ったところ等を読みたい方は、[マージ済みのPR一覧](https://github.com/cocoeyes02/tdd-training-php81/pulls?q=is%3Apr+is%3Aclosed)を確認してみてください。
+
+- [第一部：多国通貨](https://github.com/cocoeyes02/tdd-training-php81/pulls?q=is%3Apr+is%3Aclosed+label%3A%E7%AC%AC1%E9%83%A8)
+- [第二部：xUnit](https://github.com/cocoeyes02/tdd-training-php81/pulls?q=is%3Apr+is%3Aclosed+label%3A%E7%AC%AC2%E9%83%A8)
 
 # ディレクトリ構造
 
