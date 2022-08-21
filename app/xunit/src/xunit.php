@@ -64,6 +64,11 @@ class WasRun extends TestCase
         $this->log = $this->log . "testMethod ";
     }
 
+    public function testBrokenMethod(): never
+    {
+        throw new Exception();
+    }
+
     public function tearDown(): void
     {
         $this->log = $this->log . "tearDown ";
@@ -104,4 +109,4 @@ ini_set('assert.exception', '1');
 
 (new TestCaseTest("testTemplateMethod"))->run();
 (new TestCaseTest("testResult"))->run();
-(new TestCaseTest("testFailedResult"))->run();
+// (new TestCaseTest("testFailedResult"))->run();
