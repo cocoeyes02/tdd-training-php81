@@ -2,6 +2,14 @@
 
 declare(strict_types=1);
 
+class TestResult
+{
+    public function summary(): string
+    {
+        return "1 run, 0 failed";
+    }
+}
+
 class TestCase
 {
     public readonly string $name;
@@ -19,11 +27,12 @@ class TestCase
     {
     }
 
-    public function run(): void
+    public function run(): TestResult
     {
         $this->setUp();
         call_user_func([$this, $this->name]);
         $this->tearDown();
+        return new TestResult();
     }
 }
 
