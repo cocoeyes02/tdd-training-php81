@@ -98,7 +98,7 @@ class TestCaseTest extends TestCase
         $test = new WasRun("testMethod");
         $result = $test->run();
         echo $result->summary() . PHP_EOL;
-        assert("setUp testMethod tearDown " === $test->log(), "テストメソッド実行後はsetUpとtestMethodとtearDownのログが出力されなければなりません")；
+        assert("setUp testMethod tearDown " === $test->log(), "テストメソッド実行後はsetUpとtestMethodとtearDownのログが出力されなければなりません");
     }
 
     public function testResult()
